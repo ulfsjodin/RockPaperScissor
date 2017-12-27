@@ -1,23 +1,28 @@
 from random import randint
-slump = {1:'rock', 2:'paper', 3:'scissor'}
-loose_options = [('scissor','paper'), ('rock','scissor'), ('paper','rock')] 
-slumpen = slump.get(randint(1,3))
-player_inp = raw_input('your choice >' )
+
+computer_choices = {1:'rock', 2:'paper', 3:'scissor'}
+players_choice = raw_input('your choice >' )
+win_loose = [('scissor','paper'), ('rock','scissor'), ('paper','rock')] 
+rand = computer_choices.get(randint(1,3))
+
 def test_win_opt():
-    player_choice = player_inp
-    game = (player_choice, slumpen)
-
+    game = (players_choice, rand)
+    players_points = 0
+    computers_points = 0
     print '-' * 50
-    print player_choice, 'players choice'
-    print slumpen, 'computers choice'
-    print '*' * 50
-    print game, 'game'
-
-    if player_choice == slumpen:
+    print 'computer choices' ,rand 
+    print '-' * 50
+    if players_choice ==rand:
         print('even')
-    elif game in loose_options:
+    elif game in win_loose:
         print('Player wins')
+        players_points +=1
     else:
         print('computer wins')
+        computers_points += 1
+    print '*' * 50
+
+    print 'player:', players_points, 'computer:', computers_points
+    
 
 test_win_opt()
