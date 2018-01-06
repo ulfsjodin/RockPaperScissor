@@ -1,10 +1,13 @@
 from random import randint
+import random
 
 computer_choices = {1:'rock', 2:'paper', 3:'scissor'}
 win_loose = [('scissor','paper'), ('rock','scissor'), ('paper','rock')] 
-rand = computer_choices.get(randint(1,3))
+value = random.randint(1,3)
+rand = computer_choices.get(value)
 
-def test_win_opt():
+def scissor_game():
+    #rand = computer_choices.get(random.randint(1,3))
     players_points = 0
     computers_points = 0
     while True:
@@ -17,16 +20,16 @@ def test_win_opt():
             print('even')
         elif game in win_loose:
             print('Player wins')
+            print '/' * 50
             players_points +=1
         else:
-#            return False
-
             print('computer wins')
             computers_points += 1
             print '*' * 50
     
         print 'player:', players_points, 'computer:', computers_points
+        print '-' * 50
         if players_points >4:
             return False
 
-test_win_opt()
+scissor_game()
